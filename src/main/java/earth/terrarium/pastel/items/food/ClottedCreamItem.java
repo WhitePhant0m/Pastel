@@ -4,6 +4,7 @@ import earth.terrarium.pastel.items.ItemWithTooltip;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.common.EffectCures;
 
 public class ClottedCreamItem extends ItemWithTooltip {
 	
@@ -14,7 +15,7 @@ public class ClottedCreamItem extends ItemWithTooltip {
 	@Override
 	public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity user) {
 		if (!world.isClientSide) {
-			user.removeAllEffects();
+			user.removeEffectsCuredBy(EffectCures.MILK);
 		}
 		
 		return super.finishUsingItem(stack, world, user);
